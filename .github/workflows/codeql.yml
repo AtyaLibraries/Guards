@@ -1,0 +1,21 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [development, master]
+  pull_request:
+    branches: [development, master]
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  security-events: write
+  actions: read
+  contents: read
+
+jobs:
+  codeql:
+    uses: AtyaLibraries/github-workflows/.github/workflows/codeql-csharp.yml@v1
+    with:
+      solution: ./Guards.sln
