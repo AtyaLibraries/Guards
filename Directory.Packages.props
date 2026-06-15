@@ -3,11 +3,6 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
-  <ItemGroup Label="Versioning + SourceLink (library-side)">
-    <PackageVersion Include="Atya.Governance.CodeQuality" Version="1.0.0" />
-    <PackageVersion Include="MinVer" Version="7.0.0" />
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-  </ItemGroup>
   <ItemGroup Label="Testing">
     <PackageVersion Include="Atya.Governance.Testing" Version="1.0.0" />
     <PackageVersion Include="coverlet.collector" Version="10.0.0" />
