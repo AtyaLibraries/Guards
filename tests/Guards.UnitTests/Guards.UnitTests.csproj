@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Atya.Build.Sdk">
 
   <!-- Framework, analyzers, and default test packages are inherited from tests/Directory.Build.props. -->
 
