@@ -21,11 +21,11 @@ concurrency:
 
 jobs:
   publish:
-    uses: AtyaLibraries/github-workflows/.github/workflows/publish-nuget.yml@918b012c4403a8b72317eabe5962cf01eb55ea17
+    uses: AtyaLibraries/github-workflows/.github/workflows/publish-nuget.yml@602f88ca8e0f18bdbabef123f8e6530e83205541
     secrets: inherit
     with:
       solution: ./Guards.sln
       test-project: ./tests/Guards.UnitTests/Guards.UnitTests.csproj
       package-project: ./src/Guards/Guards.csproj
-      version: ${{ inputs.version || '1.0.1-oidc.20260619.1' }}
+      version: ${{ inputs.version || '1.0.1-oidc.20260619.2' }}
       require-signed: false
