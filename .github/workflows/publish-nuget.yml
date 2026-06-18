@@ -28,3 +28,4 @@ jobs:
       test-project: ./tests/Guards.UnitTests/Guards.UnitTests.csproj
       package-project: ./src/Guards/Guards.csproj
       version: ${{ inputs.version || '1.0.1-oidc.20260619.1' }}
+      require-signed: false
