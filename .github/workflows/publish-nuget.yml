@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   publish:
-    uses: AtyaLibraries/github-workflows/.github/workflows/publish-nuget.yml@28a50ac6801fed1b93d193d56613ab132ae4513f
+    uses: AtyaLibraries/github-workflows/.github/workflows/publish-nuget.yml@eee2ab47331250e0f1c4505d86d3d08cc55fb5a7
     secrets: inherit
     with:
       solution: ./Guards.sln
