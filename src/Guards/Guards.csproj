@@ -5,6 +5,7 @@
     <AssemblyName>Atya.Foundation.Guards</AssemblyName>
     <RootNamespace>Atya.Foundation.Guards</RootNamespace>
     <IsPackable>true</IsPackable>
+    <PackageValidationBaselineVersion>1.0.0</PackageValidationBaselineVersion>
     <Authors>Arsen Asulyan</Authors>
     <Copyright>Copyright (c) 2026 Arsen Asulyan</Copyright>
     <Description>Lightweight guard clauses for Atya foundation packages.</Description>
