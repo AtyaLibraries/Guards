@@ -195,7 +195,7 @@ public sealed class GuardTests
 
         IEnumerable<int> result = Guard.AgainstNullOrEmpty(input);
 
-        result.Should().BeSameAs(input);
+        result.Should().Equal(1, 2, 3);
     }
 
     [Fact]
@@ -612,5 +612,48 @@ public sealed class GuardTests
         {
             return GetEnumerator();
         }
+    }
+
+    [Fact]
+    public void AgainstNullOrEmpty_ForOneShotSequence_Should_EnumerateOnce_And_ReturnEveryElement()
+    {
+        int enumerations = 0;
+        IEnumerable<int> OneShot()
+        {
+            enumerations++;
+            yield return 1;
+            yield return 2;
+            yield return 3;
+        }
+
+        IEnumerable<int> result = Guard.AgainstNullOrEmpty(OneShot());
+
+        enumerations.Should().Be(1);
+        result.Should().Equal(1, 2, 3);
+        result.Should().Equal(1, 2, 3);
+        enumerations.Should().Be(1);
+    }
+
+    [Fact]
+    public void AgainstNullOrEmpty_ForEmptyOneShotSequence_Should_ThrowArgumentException()
+    {
+        static IEnumerable<int> Empty()
+        {
+            yield break;
+        }
+
+        Action action = () => Guard.AgainstNullOrEmpty(Empty());
+
+        action.Should().Throw<ArgumentException>().Where(ex => ex.Message.Contains("Collection cannot be empty."));
+    }
+
+    [Fact]
+    public void AgainstNullOrEmpty_ForEnumerableBackedByCollection_Should_ReturnSameInstance()
+    {
+        IEnumerable<int> input = new List<int> { 1, 2 };
+
+        IEnumerable<int> result = Guard.AgainstNullOrEmpty(input);
+
+        result.Should().BeSameAs(input);
     }
 }
