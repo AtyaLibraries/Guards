@@ -21,7 +21,7 @@
 
 - **Null validation** — validate reference types and nullable value types with `ArgumentNullException`.
 - **String guards** — reject null, empty, and whitespace-only strings.
-- **Collection guards** — validate read-only collections and enumerables without unnecessary enumeration when counts are available.
+- **Collection guards** — validate read-only collections and enumerables without unnecessary enumeration when counts are available. Arbitrary one-shot sequences are enumerated exactly once and the guard returns a materialized snapshot, so always use the returned value (1.1.0).
 - **Numeric guards** — enforce inclusive ranges, non-negative values, and values greater than zero.
 - **Invariant-friendly API** — return the validated value so guards can be used directly in assignments.
 

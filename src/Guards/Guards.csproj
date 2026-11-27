@@ -13,6 +13,7 @@
     <RepositoryUrl>https://github.com/AtyaLibraries/Guards</RepositoryUrl>
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
     <PackageValidationBaselineVersion>1.0.2</PackageValidationBaselineVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
     <!-- MinVer derives the version from git tags (e.g. tag `v1.2.3` -> 1.2.3). -->
     <MinVerTagPrefix>v</MinVerTagPrefix>

@@ -160,7 +160,11 @@ public static class Guard
     /// <typeparam name="T">The item type.</typeparam>
     /// <param name="value">The value to validate.</param>
     /// <param name="paramName">The argument name.</param>
-    /// <returns>The validated enumerable.</returns>
+    /// <returns>
+    /// The original value when it is a collection (count-checked without enumeration); otherwise a materialized
+    /// snapshot of the sequence, which is enumerated exactly once. Callers must use the returned value, because the
+    /// source of a one-shot sequence is consumed.
+    /// </returns>
     public static IEnumerable<T> AgainstNullOrEmpty<T>(
         IEnumerable<T>? value,
         [CallerArgumentExpression(nameof(value))] string? paramName = null)
@@ -187,13 +191,15 @@ public static class Guard
             return validatedValue;
         }
 
-        using IEnumerator<T> enumerator = validatedValue.GetEnumerator();
-        if (!enumerator.MoveNext())
+        // Arbitrary sequences (iterators, one-shot streams) may only be enumerable once, so they are
+        // enumerated exactly once into a snapshot, and that snapshot is returned instead of the source.
+        List<T> snapshot = [.. validatedValue];
+        if (snapshot.Count == 0)
         {
             ThrowHelper.ThrowArgumentException("Collection cannot be empty.", paramName);
         }
 
-        return validatedValue;
+        return snapshot;
     }
 
     /// <summary>

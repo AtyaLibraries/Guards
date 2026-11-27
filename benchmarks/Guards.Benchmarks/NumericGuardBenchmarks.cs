@@ -3,11 +3,21 @@ using BenchmarkDotNet.Attributes;
 
 namespace Guards.Benchmarks;
 
+/// <summary>
+/// Benchmarks integer range guard checks against equivalent manual checks.
+/// </summary>
 public class IntRangeGuardBenchmarks
 {
+    /// <summary>
+    /// Gets or sets the integer value used in each benchmark invocation.
+    /// </summary>
     [Params(5, 500)]
     public int IntValue { get; set; }
 
+    /// <summary>
+    /// Performs a manual integer range check.
+    /// </summary>
+    /// <returns>The validated integer value.</returns>
     [Benchmark(Baseline = true)]
     public int ManualIntRangeCheck()
     {
@@ -19,6 +29,10 @@ public class IntRangeGuardBenchmarks
         return IntValue;
     }
 
+    /// <summary>
+    /// Performs the integer range guard check.
+    /// </summary>
+    /// <returns>The validated integer value.</returns>
     [Benchmark]
     public int GuardIntOutOfRange()
     {
@@ -26,11 +40,21 @@ public class IntRangeGuardBenchmarks
     }
 }
 
+/// <summary>
+/// Benchmarks negative integer guard checks against equivalent manual checks.
+/// </summary>
 public class IntNegativeGuardBenchmarks
 {
+    /// <summary>
+    /// Gets or sets the integer value used in each benchmark invocation.
+    /// </summary>
     [Params(5, 500)]
     public int IntValue { get; set; }
 
+    /// <summary>
+    /// Performs a manual negative integer check.
+    /// </summary>
+    /// <returns>The validated integer value.</returns>
     [Benchmark(Baseline = true)]
     public int ManualIntNegativeCheck()
     {
@@ -42,6 +66,10 @@ public class IntNegativeGuardBenchmarks
         return IntValue;
     }
 
+    /// <summary>
+    /// Performs the negative integer guard check.
+    /// </summary>
+    /// <returns>The validated integer value.</returns>
     [Benchmark]
     public int GuardIntNegative()
     {
@@ -49,11 +77,21 @@ public class IntNegativeGuardBenchmarks
     }
 }
 
+/// <summary>
+/// Benchmarks zero-or-negative integer guard checks against equivalent manual checks.
+/// </summary>
 public class IntZeroOrNegativeGuardBenchmarks
 {
+    /// <summary>
+    /// Gets or sets the integer value used in each benchmark invocation.
+    /// </summary>
     [Params(5, 500)]
     public int IntValue { get; set; }
 
+    /// <summary>
+    /// Performs a manual zero-or-negative integer check.
+    /// </summary>
+    /// <returns>The validated integer value.</returns>
     [Benchmark(Baseline = true)]
     public int ManualIntZeroOrNegativeCheck()
     {
@@ -65,6 +103,10 @@ public class IntZeroOrNegativeGuardBenchmarks
         return IntValue;
     }
 
+    /// <summary>
+    /// Performs the zero-or-negative integer guard check.
+    /// </summary>
+    /// <returns>The validated integer value.</returns>
     [Benchmark]
     public int GuardIntZeroOrNegative()
     {
